@@ -639,6 +639,21 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenu.classList.toggle('flex');
         });
     }
+
+    document.querySelectorAll('.mobile-services-toggle').forEach(button => {
+        const panel = button.nextElementSibling;
+        button.addEventListener('click', () => {
+            const expanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', (!expanded).toString());
+            if(panel) {
+                panel.classList.toggle('hidden');
+            }
+            const icon = button.querySelector('svg');
+            if(icon) {
+                icon.classList.toggle('rotate-180');
+            }
+        });
+    });
 });
 
 function acceptCookies() {
